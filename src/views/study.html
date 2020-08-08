@@ -57,28 +57,37 @@
             </div>
         </header>
         <main>
-            {%for proffy in proffys %}
-            <article class="teacher-item">
-                <header>
-                    <img src="{{proffy.avatar}}"
-                        alt="{{proffy.name}}">
-                    <div>
-                        <strong>{{proffy.name}}</strong>
-                        <span>{{proffy.subject}}</span>
-                    </div>
-                </header>
 
-                <p>{{proffy.bio}}</p>
+            {% if proffys == "" %}
 
-                <footer>
-                    <p>Preço/hora<strong>R$ {{proffy.cost}},00</strong>
-                    </p>
-                    <a href="#{{proffy.whatsapp}}" class="button" target="_blank">
-                        <img src="/img/icons/whatsapp.svg" alt="Whatsapp">Entrar em contato
-                    </a>
-                </footer>
-            </article>
-            {%endfor %}
+            <p class="no-results">Nenhum professor encontrado</p>
+
+            {% else %}
+
+                {%for proffy in proffys %}
+                <article class="teacher-item">
+                    <header>
+                        <img src="{{proffy.avatar}}"
+                            alt="{{proffy.name}}">
+                        <div>
+                            <strong>{{proffy.name}}</strong>
+                            <span>{{proffy.subject}}</span>
+                        </div>
+                    </header>
+
+                    <p>{{proffy.bio}}</p>
+
+                    <footer>
+                        <p>Preço/hora<strong>R$ {{proffy.cost}},00</strong>
+                        </p>
+                        <a href="#{{proffy.whatsapp}}" class="button" target="_blank">
+                            <img src="/img/icons/whatsapp.svg" alt="Whatsapp">Entrar em contato
+                        </a>
+                    </footer>
+                </article>
+                {%endfor %}
+    
+            {% endif %}
         </main>
     </div>
 </body>
